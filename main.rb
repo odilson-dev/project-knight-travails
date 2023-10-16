@@ -26,7 +26,20 @@ class Square
         valid_children = valid_children.map do |space|
             Square.new(space[0], space[1], board)
         end
-        
+
         @children = valid_children
     end
+end
+
+def display_path(current)
+    parent = current.parent
+    array = []
+    while !parent.nil?
+        array << [parent.x, parent.y]
+        parent = parent.parent
+    end
+    array.reverse!
+    array << [current.x, current.y]
+    puts "Your path is: "
+    array.each { |i| p i }
 end
