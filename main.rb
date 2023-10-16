@@ -29,6 +29,19 @@ class Square
 
         @children = valid_children
     end
+
+    def bfs(search_value, children)
+        queue = children
+        loop do
+            current = queue.shift
+            if [current.x, current.y] == search_value
+                display_path(current)
+                break
+            else
+                create_children(current).each { |child| queue << child }
+            end
+        end
+    end
 end
 
 def display_path(current)
